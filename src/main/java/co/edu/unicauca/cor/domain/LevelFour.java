@@ -5,27 +5,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Nivel de atención 2 de recamos
+ * Nivel de atencion 4 de reclamos
  *
- * @author Libardo Pantoja, Julio A. Hurtado
+ * @author Beca98
  */
-public class LevelThree extends ClaimHandler {
+public class LevelFour extends ClaimHandler{
 
-    public LevelThree(String email) {
+    public LevelFour(String email) {
         super(email);
     }
 
     @Override
     public boolean attend(Claim claim) {
-        if (claim.getType().equals(TypeEnum.HIGH)) {
+        if (claim.getType().equals(TypeEnum.EXTREME)) {
             Logger logger = LoggerFactory.getLogger(Utilities.class);
-            logger.info("El reclamo será atendido en el nivel 3 por " + getEmail());
+            logger.info("El reclamo será atendido en el nivel 4 por " + getEmail());
             Utilities.sendMail(getEmail(), claim.getTitle(), claim.getDescription());
             claim.setAttended(true);
             return true;
 
         } else {
-            return getNextHandler().attend(claim);
+            System.out.println("No se puede atender el reclamo.");
+            return false;
         }
     }
 

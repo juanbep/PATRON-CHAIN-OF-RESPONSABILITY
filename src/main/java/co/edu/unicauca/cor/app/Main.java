@@ -10,7 +10,6 @@ import co.edu.unicauca.cor.domain.TypeEnum;
  */
 public class Main {
 
-
     public static void main(String[] args) {
         ClaimManager manager = new ClaimManager();
         manager.createAthentionFlow();
@@ -24,8 +23,12 @@ public class Main {
         claim = new Claim(3, "Calidad del producto", "La comida del restaurante popayan casero estaba fria", TypeEnum.HIGH);
         manager.getLevelOne().attend(claim);
 
-        claim = new Claim(4, "Producto equivocado", "Me enviaron el pedido que no era", TypeEnum.UNCLASSIFIED);
+        claim = new Claim(4, "Producto equivocado", "Me enviaron el pedido que no era", TypeEnum.EXTREME);
         manager.getLevelOne().attend(claim);
+
+        claim = new Claim(5, "Calidad del Producto", "Me enviaron el pedido incompleto", TypeEnum.UNCLASSIFIED);
+        manager.getLevelOne().attend(claim);
+
     }
 
 }
